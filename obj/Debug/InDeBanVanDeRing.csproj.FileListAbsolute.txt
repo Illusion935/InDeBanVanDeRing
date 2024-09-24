@@ -10,3 +10,5 @@ C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.csproj.Core
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.exe
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.pdb
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.Form2.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.GameObjects.BasicCard.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.GameObjects.BasicCardControl.resources

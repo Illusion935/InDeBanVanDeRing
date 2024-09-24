@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InDeBanVanDeRing.GameObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,8 @@ namespace InDeBanVanDeRing
 
             // Subscribe naar het Load event
             this.Load += Form2_Load;
+
+            CreateAndShowCards();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -41,6 +44,32 @@ namespace InDeBanVanDeRing
         {
             get { return txtPlayerNaam.Text; }
             set { txtPlayerNaam.Text = value; }
+        }
+
+        public void CreateAndShowCards()
+        {
+            List<BasicCard> cards = new List<BasicCard>
+            {
+                new FightCard(),
+                new HideCard(),
+                // Voeg andere kaarten toe zoals nodig
+            };
+
+            int xPos = 10; // Beginpositie op de x-as
+            int yPos = 80; // Beginpositie op de y-as
+
+            foreach (var card in cards)
+            {
+                BasicCardControl cardControl = new BasicCardControl();
+                cardControl.SetCard(card); // Stel de kaart in
+
+                // Stel de locatie van de controle in
+                cardControl.Location = new Point(xPos, yPos); // Positie waar je de kaart wilt weergeven
+
+                this.Controls.Add(cardControl); // Voeg de controle toe aan de form
+
+                xPos += cardControl.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
+            }
         }
 
         // Methode die de combobox updates met de beschikbare characters

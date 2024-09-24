@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InDeBanVanDeRing.GameObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,11 +17,31 @@ namespace InDeBanVanDeRing
 
         private Dictionary<int, Form2> playerForms = new Dictionary<int, Form2>();
         private List<string> availableCharacters = new List<string> { "Frodo", "Sam", "Merry", "Pippin", "Fatty" };
+        private List<Card> cards = new List<Card>();
 
         public Form1()
         {
             InitializeComponent();
             instance = this;
+        }
+
+        public void PutCardOnBoard(Card newCard)
+        {
+            cards.Add(newCard);
+
+            int xPos = 50; // Beginpositie op de x-as
+            int yPos = 50; // Beginpositie op de y-as
+
+            foreach (var card in cards)
+            {
+                // Stel de locatie van de controle in
+                card.ControlLocation = new Point(xPos, yPos);
+
+                card.SetCardControl();
+                card.AddControlToForm(this);
+               
+                xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
+            }
         }
 
         private void btnPlayer1Window_Click(object sender, EventArgs e)
