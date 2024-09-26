@@ -11,10 +11,11 @@ namespace InDeBanVanDeRing.GameObjects
 
         public override Image CardImage => Properties.Resources.vechten; // Verwijs naar de afbeelding in resources
 
-        public override void Play()
+        public override bool Play()
         {
-            base.Play();
+            bool playedSuccesfully = base.Play();
             MessageBox.Show("You play the Fight card!");
+            return playedSuccesfully;
         }
     }
 }

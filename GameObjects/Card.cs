@@ -23,7 +23,7 @@ namespace InDeBanVanDeRing.GameObjects
             CardDescription = cardDescription; // Gebruik de property direct
         }
 
-        public abstract void Play();
+        public abstract bool Play();
         public abstract void SetCardControl();
         public abstract void AddControlToForm(Form form);
     }

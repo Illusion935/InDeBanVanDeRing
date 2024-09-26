@@ -21,9 +21,22 @@ namespace InDeBanVanDeRing.GameObjects
             Width = BasicCardControl.Width;
         }
 
-        public override void Play()
+        public override bool Play()
         {
-            Form1.instance.PutCardOnBoard(this);
+            // Speel de kaart, voeg hier logica toe voor validatie
+            bool isValid = true; // of valideer de spelregels
+
+            if (isValid)
+            {
+                // Voer speel-logica uit
+                BoardForm.instance.PutCardOnBoard(this);
+                return true;
+            }
+            else
+            {
+                // Mogelijk wat logica om aan te geven dat spelen niet is toegestaan
+                return false;
+            }
         }
 
         public override void SetCardControl()

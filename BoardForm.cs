@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace InDeBanVanDeRing
 {
-    public partial class Form1 : Form
+    public partial class BoardForm : Form, IForm
     {
-        public static Form1 instance;
+        public static BoardForm instance;
 
-        private Dictionary<int, Form2> playerForms = new Dictionary<int, Form2>();
+        private Dictionary<int, PlayerForm> playerForms = new Dictionary<int, PlayerForm>();
         private List<string> availableCharacters = new List<string> { "Frodo", "Sam", "Merry", "Pippin", "Fatty" };
         private List<Card> cards = new List<Card>();
 
-        public Form1()
+        public BoardForm()
         {
             InitializeComponent();
             instance = this;
@@ -27,6 +27,12 @@ namespace InDeBanVanDeRing
 
         public void PutCardOnBoard(Card newCard)
         {
+            cards.Clear();
+            foreach (var cardControl in this.Controls.OfType<BasicCardControl>())
+            {
+                cards.Add(cardControl.GetCard());
+            }
+
             cards.Add(newCard);
 
             int xPos = 50; // Beginpositie op de x-as
@@ -44,12 +50,17 @@ namespace InDeBanVanDeRing
             }
         }
 
+        public void RemoveCardFromList(Card card)
+        {
+            cards.Remove(card); // Verwijder de bijbehorende kaart uit de lijst
+        }
+
         private void btnPlayer1Window_Click(object sender, EventArgs e)
         {
             if (playerForms.Count < 5) {
                 int playerNumber = Enumerable.Range(1, 5).Except(playerForms.Keys).First();
 
-                Form2 form = new Form2(playerNumber);
+                PlayerForm form = new PlayerForm(playerNumber);
                 form.PlayerName = "player " + playerNumber.ToString();
 
                 playerForms.Add(playerNumber, form);

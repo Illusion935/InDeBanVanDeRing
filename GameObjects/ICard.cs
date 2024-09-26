@@ -11,7 +11,7 @@ namespace InDeBanVanDeRing.GameObjects
     {
         string CardName { get; }
         string CardDescription { get; }
-        void Play();
+        bool Play();
         void SetCardControl();
     }
 }

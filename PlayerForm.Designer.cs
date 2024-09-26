@@ -1,6 +1,6 @@
 ﻿namespace InDeBanVanDeRing
 {
-    partial class Form2
+    partial class PlayerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.imgCharacter.TabIndex = 3;
             this.imgCharacter.TabStop = false;
             // 
-            // Form2
+            // PlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,8 +83,8 @@
             this.Controls.Add(this.btnLockCharacter);
             this.Controls.Add(this.comboBoxCharacters);
             this.Controls.Add(this.txtPlayerNaam);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "PlayerForm";
+            this.Text = "Player";
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

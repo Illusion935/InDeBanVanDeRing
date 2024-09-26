@@ -32,14 +32,31 @@ namespace InDeBanVanDeRing.GameObjects
             this.pictureBoxCard.BackgroundImage = card.CardImage; // Stel de afbeelding in
         }
 
+        public BasicCard GetCard()
+        {
+            return _card;
+        }
+
         private void btnPlayCard_Click(object sender, EventArgs e)
         {
-            _card.Play();
-            // Verwijder deze control uit de parent form
-            this.Parent.Controls.Remove(this); // Verwijder de control
+            // Probeer Parent te casten naar IForm
+            if (!(this.Parent is IForm parentForm))
+            {
+                MessageBox.Show("Parent form does not implement IForm.");
+                return; // Stop de uitvoering als de parent niet het juiste type heeft
+            }
 
-            // Dispose of the control
-            this.Dispose(); // Optioneel: om resources vrij te geven
+            // Probeer de kaart te spelen
+            bool cardPlayedSuccessfully = _card.Play();
+            if (!cardPlayedSuccessfully)
+            {
+                // Optioneel: geef hier een foutmelding of doe iets anders als het spelen niet is gelukt
+                MessageBox.Show("De kaart kon niet worden gespeeld.");
+                return; // Stop de uitvoering als het spelen niet is gelukt
+            }
+
+            // Verwijder de kaart uit de parent form
+            parentForm.RemoveCardFromList(_card);
         }
 
         private void InitializeComponent()

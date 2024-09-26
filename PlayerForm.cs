@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace InDeBanVanDeRing
 {
-    public partial class Form2 : Form
+    public partial class PlayerForm : Form, IForm
     {
-        public static Form2 instance;
+        public static PlayerForm instance;
         private int playerNumber; // Opslag van het speler-nummer
         private string selectedCharacter; // Opslag van het gekozen karakter
+        private List<Card> cards = new List<Card>();
 
         public event Action<string, int> CharacterLockedIn; // Event dat wordt getriggerd wanneer een keuze wordt vastgezet
 
-        public Form2(int playerNumber)
+        public PlayerForm(int playerNumber)
         {
             InitializeComponent();
             instance = this;
@@ -28,12 +29,12 @@ namespace InDeBanVanDeRing
             comboBoxCharacters.Items.AddRange(new string[] { "Frodo", "Sam", "Merry", "Pippin", "Fatty" });
 
             // Subscribe naar het Load event
-            this.Load += Form2_Load;
+            this.Load += PlayerForm_Load;
 
             CreateAndShowCards();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void PlayerForm_Load(object sender, EventArgs e)
         {
             comboBoxCharacters.SelectedIndex = 0; // Standaard selecteer de eerste optie
             comboBoxCharacters.SelectedItem = comboBoxCharacters.Items[0];
@@ -48,28 +49,32 @@ namespace InDeBanVanDeRing
 
         public void CreateAndShowCards()
         {
-            List<BasicCard> cards = new List<BasicCard>
+            cards.Clear();
+            foreach (var cardControl in this.Controls.OfType<BasicCardControl>())
             {
-                new FightCard(),
-                new HideCard(),
-                // Voeg andere kaarten toe zoals nodig
-            };
+                cards.Add(cardControl.GetCard());
+            }
+
+            cards.Add(new FightCard());
+            cards.Add(new HideCard());
 
             int xPos = 10; // Beginpositie op de x-as
             int yPos = 80; // Beginpositie op de y-as
 
             foreach (var card in cards)
             {
-                BasicCardControl cardControl = new BasicCardControl();
-                cardControl.SetCard(card); // Stel de kaart in
-
                 // Stel de locatie van de controle in
-                cardControl.Location = new Point(xPos, yPos); // Positie waar je de kaart wilt weergeven
+                card.ControlLocation = new Point(xPos, yPos);
 
-                this.Controls.Add(cardControl); // Voeg de controle toe aan de form
+                card.SetCardControl();
+                card.AddControlToForm(this);
 
-                xPos += cardControl.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
+                xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
             }
+        }
+        public void RemoveCardFromList(Card card)
+        {
+            cards.Remove(card); // Verwijder de bijbehorende kaart uit de lijst
         }
 
         // Methode die de combobox updates met de beschikbare characters

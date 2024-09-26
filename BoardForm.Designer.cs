@@ -1,6 +1,6 @@
 ﻿namespace InDeBanVanDeRing
 {
-    partial class Form1
+    partial class BoardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoardForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.btnPlayer1Window = new System.Windows.Forms.Button();
+            this.btnStartGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -64,7 +65,8 @@
             // 
             // btnPlayer1Window
             // 
-            this.btnPlayer1Window.Location = new System.Drawing.Point(345, 330);
+            this.btnPlayer1Window.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPlayer1Window.Location = new System.Drawing.Point(345, 312);
             this.btnPlayer1Window.Name = "btnPlayer1Window";
             this.btnPlayer1Window.Size = new System.Drawing.Size(170, 49);
             this.btnPlayer1Window.TabIndex = 4;
@@ -72,18 +74,29 @@
             this.btnPlayer1Window.UseVisualStyleBackColor = true;
             this.btnPlayer1Window.Click += new System.EventHandler(this.btnPlayer1Window_Click);
             // 
-            // Form1
+            // btnStartGame
+            // 
+            this.btnStartGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnStartGame.Location = new System.Drawing.Point(345, 370);
+            this.btnStartGame.Name = "btnStartGame";
+            this.btnStartGame.Size = new System.Drawing.Size(170, 49);
+            this.btnStartGame.TabIndex = 5;
+            this.btnStartGame.Text = "Start het spel";
+            this.btnStartGame.UseVisualStyleBackColor = true;
+            // 
+            // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(832, 431);
+            this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnPlayer1Window);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "BoardForm";
+            this.Text = "Board";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -96,6 +109,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Button btnPlayer1Window;
+        private System.Windows.Forms.Button btnStartGame;
     }
 }
 
