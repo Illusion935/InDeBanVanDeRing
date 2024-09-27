@@ -14,9 +14,11 @@ namespace InDeBanVanDeRing
     public partial class PlayerForm : Form, IForm
     {
         public static PlayerForm instance;
+
         private int playerNumber; // Opslag van het speler-nummer
         private string selectedCharacter; // Opslag van het gekozen karakter
         private List<Card> cards = new List<Card>();
+        private List<Control> cardControls = new List<Control>();
 
         public event Action<string, int> CharacterLockedIn; // Event dat wordt getriggerd wanneer een keuze wordt vastgezet
 
@@ -49,29 +51,40 @@ namespace InDeBanVanDeRing
 
         public void CreateAndShowCards()
         {
-            cards.Clear();
-            foreach (var cardControl in this.Controls.OfType<BasicCardControl>())
-            {
-                cards.Add(cardControl.GetCard());
-            }
-
             cards.Add(new FightCard());
             cards.Add(new HideCard());
 
-            int xPos = 10; // Beginpositie op de x-as
-            int yPos = 80; // Beginpositie op de y-as
-
+            cardControls.Clear();
             foreach (var card in cards)
             {
-                // Stel de locatie van de controle in
-                card.ControlLocation = new Point(xPos, yPos);
-
                 card.SetCardControl();
-                card.AddControlToForm(this);
+                cardControls.Add(card.GetCardControl());
+            }
 
-                xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
+            ArrangeCardsInPlayerForm();
+        }
+
+        public void ArrangeCardsInPlayerForm()
+        {
+            int formWidth = this.ClientSize.Width;
+            int cardWidth = cardControls[0].Width;
+            int spacing = 10; // De ruimte tussen de kaarten
+
+            int totalWidth = (cardControls.Count * cardWidth) + ((cardControls.Count - 1) * spacing);
+            int startX = (formWidth - totalWidth) / 2; // Beginpunt, zodat alles gecentreerd is
+
+            int yPos = this.ClientSize.Height - cardControls[0].Height - 20; // Plaats dicht bij de onderkant
+
+            for (int i = 0; i < cards.Count; i++)
+            {
+                Control cardControl = cardControls[i];
+                cardControl.Location = new Point(startX + i * (cardWidth + spacing), yPos);
+                cardControl.Anchor = AnchorStyles.Bottom; // Blijft aan de onderkant verankerd
+                this.Controls.Add(cardControl);
             }
         }
+
+
         public void RemoveCardFromList(Card card)
         {
             cards.Remove(card); // Verwijder de bijbehorende kaart uit de lijst

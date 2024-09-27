@@ -16,6 +16,17 @@ namespace InDeBanVanDeRing.GameObjects
         private Button btnPlayCard;
         private PictureBox pictureBoxCard;
 
+        enum dayoftheweek
+        {
+            monday = 1 << 0,
+            tuesday = 1 << 1,
+            wednesday = 1 << 2,
+            thursday = 1 << 3,
+            friday = 1 << 4,
+            saturday = 1 << 5,
+            sunday = 1 << 6,
+        }
+
         public BasicCardControl()
         {
             InitializeComponent();
@@ -26,7 +37,6 @@ namespace InDeBanVanDeRing.GameObjects
             _card = card;
 
             // Stel de eigenschappen van de controle in op basis van de kaart
-            this.Location = card.ControlLocation;
             this.lblCardName.Text = card.CardName;
             this.txtCardDescription.Text = card.CardDescription;
             this.pictureBoxCard.BackgroundImage = card.CardImage; // Stel de afbeelding in

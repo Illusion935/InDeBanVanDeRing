@@ -14,6 +14,8 @@ namespace InDeBanVanDeRing
     public partial class BoardForm : Form, IForm
     {
         public static BoardForm instance;
+        
+        public List<Control> cardControls { get; }
 
         private Dictionary<int, PlayerForm> playerForms = new Dictionary<int, PlayerForm>();
         private List<string> availableCharacters = new List<string> { "Frodo", "Sam", "Merry", "Pippin", "Fatty" };
@@ -27,16 +29,10 @@ namespace InDeBanVanDeRing
 
         public void PutCardOnBoard(Card newCard)
         {
-            cards.Clear();
-            foreach (var cardControl in this.Controls.OfType<BasicCardControl>())
-            {
-                cards.Add(cardControl.GetCard());
-            }
-
             cards.Add(newCard);
 
             int xPos = 50; // Beginpositie op de x-as
-            int yPos = 50; // Beginpositie op de y-as
+            int yPos = this.Height/2 - newCard.Height/2; // Beginpositie op de y-as
 
             foreach (var card in cards)
             {
@@ -44,7 +40,7 @@ namespace InDeBanVanDeRing
                 card.ControlLocation = new Point(xPos, yPos);
 
                 card.SetCardControl();
-                card.AddControlToForm(this);
+                card.GetCardControl();
                
                 xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
             }

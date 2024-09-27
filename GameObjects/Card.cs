@@ -14,6 +14,7 @@ namespace InDeBanVanDeRing.GameObjects
         public string CardDescription { get; protected set; } // Directe property
         public Point ControlLocation { get; set; }
         public int Width { get; protected set; }
+        public int Height { get; protected set; }
 
         public abstract Image CardImage { get; } // Abstract property voor de afbeelding
 
@@ -25,6 +26,6 @@ namespace InDeBanVanDeRing.GameObjects
 
         public abstract bool Play();
         public abstract void SetCardControl();
-        public abstract void AddControlToForm(Form form);
+        public abstract Control GetCardControl();
     }
 }

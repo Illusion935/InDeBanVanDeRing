@@ -19,6 +19,7 @@ namespace InDeBanVanDeRing.GameObjects
             CardDescription = cardDescription; // Gebruik de property direct
             BasicCardControl = new BasicCardControl();
             Width = BasicCardControl.Width;
+            Height = BasicCardControl.Height;
         }
 
         public override bool Play()
@@ -43,9 +44,9 @@ namespace InDeBanVanDeRing.GameObjects
         {
         }
 
-        public override void AddControlToForm(Form form)
+        public override Control GetCardControl()
         {
-            form.Controls.Add(BasicCardControl);
+            return BasicCardControl;
         }
     }
 }
