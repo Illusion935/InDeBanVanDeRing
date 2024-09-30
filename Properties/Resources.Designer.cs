@@ -73,6 +73,26 @@ namespace InDeBanVanDeRing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap diamond {
+            get {
+                object obj = ResourceManager.GetObject("diamond", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap friendship {
+            get {
+                object obj = ResourceManager.GetObject("friendship", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap frodo {
             get {
                 object obj = ResourceManager.GetObject("frodo", resourceCulture);
@@ -96,6 +116,16 @@ namespace InDeBanVanDeRing.Properties {
         internal static System.Drawing.Bitmap schuilen {
             get {
                 object obj = ResourceManager.GetObject("schuilen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap travel {
+            get {
+                object obj = ResourceManager.GetObject("travel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

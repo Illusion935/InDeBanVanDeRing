@@ -3,17 +3,21 @@ using System.Windows.Forms;
 
 namespace InDeBanVanDeRing.GameObjects
 {
-    public abstract class BasicCard : Card, ICard
+    public abstract class HobbitCard : Card, ICard
     {
-        public BasicCardControl BasicCardControl { get; protected set; }
+        public HobbitCardControl HobbitCardControl { get; protected set; }
 
-        protected BasicCard(string cardName, string cardDescription) : base(cardName, cardDescription)
+        protected HobbitCard(string cardName, string cardDescription, Color cardColor) : base(cardName, cardDescription)
         {
             CardName = cardName; // Gebruik de property direct
             CardDescription = cardDescription; // Gebruik de property direct
-            BasicCardControl = new BasicCardControl();
-            Width = BasicCardControl.Width;
-            Height = BasicCardControl.Height;
+
+            HobbitCardControl = new HobbitCardControl();
+            Width = HobbitCardControl.Width;
+            Height = HobbitCardControl.Height;
+            Color = cardColor;
+
+            SetCardControl();
         }
 
         public override bool Play()
@@ -36,12 +40,12 @@ namespace InDeBanVanDeRing.GameObjects
 
         public override void SetCardControl()
         {
-            BasicCardControl.SetCard(this);
+            HobbitCardControl.SetCard(this);
         }
 
         public override Control GetCardControl()
         {
-            return BasicCardControl;
+            return HobbitCardControl;
         }
     }
 }

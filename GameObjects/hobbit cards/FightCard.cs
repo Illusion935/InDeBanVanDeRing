@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace InDeBanVanDeRing.GameObjects
 {
-    public class FightCard : BasicCard
+    public class FightCard : HobbitCard
     {
-        public FightCard() : base("Fight", "Use this card to engage in combat.")
+        public FightCard(Color color) : base("Fight", "Use this card to engage in combat.", color)
         {
         }
 

@@ -4,45 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace InDeBanVanDeRing.GameObjects
 {
-    public partial class BasicCardControl : UserControl
+    public partial class HobbitCardControl : UserControl
     {
-        private BasicCard _card; // Houd de kaart bij
+        private HobbitCard _card; // Houd de kaart bij
 
         private Label lblCardName;
         private TextBox txtCardDescription;
         private Button btnPlayCard;
         private PictureBox pictureBoxCard;
 
-        enum dayoftheweek
-        {
-            monday = 1 << 0,
-            tuesday = 1 << 1,
-            wednesday = 1 << 2,
-            thursday = 1 << 3,
-            friday = 1 << 4,
-            saturday = 1 << 5,
-            sunday = 1 << 6,
-        }
-
-        public BasicCardControl()
+        public HobbitCardControl()
         {
             InitializeComponent();
         }
 
-        public void SetCard(BasicCard card)
+        public void SetCard(HobbitCard card)
         {
             _card = card;
 
             // Stel de eigenschappen van de controle in op basis van de kaart
+            this.BackColor = card.Color;
             this.lblCardName.Text = card.CardName;
             this.txtCardDescription.Text = card.CardDescription;
             this.pictureBoxCard.BackgroundImage = card.CardImage; // Stel de afbeelding in
         }
 
-        public BasicCard GetCard()
+        public HobbitCard GetCard()
         {
             return _card;
         }
@@ -66,22 +57,22 @@ namespace InDeBanVanDeRing.GameObjects
             }
 
             // Verwijder de kaart uit de parent form
-            parentForm.RemoveCardFromList(_card);
+            parentForm.RemoveCardFromLists(_card);
         }
 
         private void InitializeComponent()
         {
             this.lblCardName = new System.Windows.Forms.Label();
             this.txtCardDescription = new System.Windows.Forms.TextBox();
-            this.pictureBoxCard = new System.Windows.Forms.PictureBox();
             this.btnPlayCard = new System.Windows.Forms.Button();
+            this.pictureBoxCard = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCardName
             // 
             this.lblCardName.AutoSize = true;
-            this.lblCardName.Location = new System.Drawing.Point(25, 10);
+            this.lblCardName.Location = new System.Drawing.Point(19, 10);
             this.lblCardName.Name = "lblCardName";
             this.lblCardName.Size = new System.Drawing.Size(85, 20);
             this.lblCardName.TabIndex = 1;
@@ -89,25 +80,17 @@ namespace InDeBanVanDeRing.GameObjects
             // 
             // txtCardDescription
             // 
-            this.txtCardDescription.Location = new System.Drawing.Point(25, 102);
+            this.txtCardDescription.Enabled = false;
+            this.txtCardDescription.Location = new System.Drawing.Point(19, 93);
             this.txtCardDescription.Multiline = true;
             this.txtCardDescription.Name = "txtCardDescription";
             this.txtCardDescription.ReadOnly = true;
             this.txtCardDescription.Size = new System.Drawing.Size(100, 63);
             this.txtCardDescription.TabIndex = 2;
             // 
-            // pictureBoxCard
-            // 
-            this.pictureBoxCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCard.Location = new System.Drawing.Point(25, 33);
-            this.pictureBoxCard.Name = "pictureBoxCard";
-            this.pictureBoxCard.Size = new System.Drawing.Size(100, 50);
-            this.pictureBoxCard.TabIndex = 0;
-            this.pictureBoxCard.TabStop = false;
-            // 
             // btnPlayCard
             // 
-            this.btnPlayCard.Location = new System.Drawing.Point(25, 171);
+            this.btnPlayCard.Location = new System.Drawing.Point(19, 162);
             this.btnPlayCard.Name = "btnPlayCard";
             this.btnPlayCard.Size = new System.Drawing.Size(100, 41);
             this.btnPlayCard.TabIndex = 3;
@@ -115,14 +98,25 @@ namespace InDeBanVanDeRing.GameObjects
             this.btnPlayCard.UseVisualStyleBackColor = true;
             this.btnPlayCard.Click += new System.EventHandler(this.btnPlayCard_Click);
             // 
-            // BasicCardControl
+            // pictureBoxCard
             // 
+            this.pictureBoxCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxCard.Location = new System.Drawing.Point(19, 33);
+            this.pictureBoxCard.Name = "pictureBoxCard";
+            this.pictureBoxCard.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxCard.TabIndex = 0;
+            this.pictureBoxCard.TabStop = false;
+            // 
+            // HobbitCardControl
+            // 
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.btnPlayCard);
             this.Controls.Add(this.txtCardDescription);
             this.Controls.Add(this.lblCardName);
             this.Controls.Add(this.pictureBoxCard);
-            this.Name = "BasicCardControl";
-            this.Size = new System.Drawing.Size(150, 217);
+            this.Name = "HobbitCardControl";
+            this.Size = new System.Drawing.Size(136, 213);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace InDeBanVanDeRing.GameObjects
 {
-    public class HideCard : BasicCard
+    public class HideCard : HobbitCard
     {
-        public HideCard() : base("Hide", "Use this card to hide from the enemy.")
+        public HideCard(Color color) : base("Hide", "Use this card to hide from the enemy.", color)
         {
         }
 

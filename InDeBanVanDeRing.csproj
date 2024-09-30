@@ -52,6 +52,10 @@
     <Compile Include="BoardForm.Designer.cs">
       <DependentUpon>BoardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CardColors.cs" />
+    <Compile Include="GameObjects\hobbit cards\FriendshipCard.cs" />
+    <Compile Include="GameObjects\hobbit cards\JokerCard.cs" />
+    <Compile Include="GameObjects\hobbit cards\TravelCard.cs" />
     <Compile Include="IForm.cs" />
     <Compile Include="PlayerForm.cs">
       <SubType>Form</SubType>
@@ -59,13 +63,13 @@
     <Compile Include="PlayerForm.Designer.cs">
       <DependentUpon>PlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameObjects\BasicCard.cs" />
-    <Compile Include="GameObjects\BasicCardControl.cs">
+    <Compile Include="GameObjects\HobbitCard_1.cs" />
+    <Compile Include="GameObjects\HobbitCardControl_1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GameObjects\Card.cs" />
-    <Compile Include="GameObjects\HideCard.cs" />
-    <Compile Include="GameObjects\FightCard.cs" />
+    <Compile Include="GameObjects\hobbit cards\HideCard.cs" />
+    <Compile Include="GameObjects\hobbit cards\FightCard.cs" />
     <Compile Include="GameObjects\ICard.cs" />
     <Compile Include="GameObjects\SpecialCard.cs" />
     <Compile Include="Program.cs" />
@@ -76,11 +80,11 @@
     <EmbeddedResource Include="PlayerForm.resx">
       <DependentUpon>PlayerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameObjects\BasicCard.resx">
-      <DependentUpon>BasicCard.cs</DependentUpon>
+    <EmbeddedResource Include="GameObjects\HobbitCard_1.resx">
+      <DependentUpon>HobbitCard_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameObjects\BasicCardControl.resx">
-      <DependentUpon>BasicCardControl.cs</DependentUpon>
+    <EmbeddedResource Include="GameObjects\HobbitCardControl_1.resx">
+      <DependentUpon>HobbitCardControl_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +123,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\schuilen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\travel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\friendship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

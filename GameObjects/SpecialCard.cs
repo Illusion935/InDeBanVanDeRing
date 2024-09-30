@@ -10,16 +10,16 @@ namespace InDeBanVanDeRing.GameObjects
 {
     public abstract class SpecialCard : Card, ICard
     {
-        public BasicCardControl BasicCardControl { get; protected set; }
+        public HobbitCardControl HobbitCardControl { get; protected set; }
         public override abstract Image CardImage { get; }
 
         protected SpecialCard(string cardName, string cardDescription) : base(cardName, cardDescription)
         {
             CardName = cardName; // Gebruik de property direct
             CardDescription = cardDescription; // Gebruik de property direct
-            BasicCardControl = new BasicCardControl();
-            Width = BasicCardControl.Width;
-            Height = BasicCardControl.Height;
+            HobbitCardControl = new HobbitCardControl();
+            Width = HobbitCardControl.Width;
+            Height = HobbitCardControl.Height;
         }
 
         public override bool Play()
@@ -46,7 +46,7 @@ namespace InDeBanVanDeRing.GameObjects
 
         public override Control GetCardControl()
         {
-            return BasicCardControl;
+            return HobbitCardControl;
         }
     }
 }

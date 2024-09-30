@@ -1,4 +1,5 @@
 ﻿using InDeBanVanDeRing.GameObjects;
+using InDeBanVanDeRing.GameObjects.hobbit_cards;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,6 @@ namespace InDeBanVanDeRing
             // Subscribe naar het Load event
             this.Load += PlayerForm_Load;
 
-            CreateAndShowCards();
         }
 
         private void PlayerForm_Load(object sender, EventArgs e)
@@ -49,15 +49,12 @@ namespace InDeBanVanDeRing
             set { txtPlayerNaam.Text = value; }
         }
 
-        public void CreateAndShowCards()
+        public void AddCardsToHand(List<Card> cardsToAdd)
         {
-            cards.Add(new FightCard());
-            cards.Add(new HideCard());
+            cards.AddRange(cardsToAdd);
 
-            cardControls.Clear();
-            foreach (var card in cards)
+            foreach (var card in cardsToAdd)
             {
-                card.SetCardControl();
                 cardControls.Add(card.GetCardControl());
             }
 
@@ -66,28 +63,24 @@ namespace InDeBanVanDeRing
 
         public void ArrangeCardsInPlayerForm()
         {
-            int formWidth = this.ClientSize.Width;
             int cardWidth = cardControls[0].Width;
             int spacing = 10; // De ruimte tussen de kaarten
 
-            int totalWidth = (cardControls.Count * cardWidth) + ((cardControls.Count - 1) * spacing);
-            int startX = (formWidth - totalWidth) / 2; // Beginpunt, zodat alles gecentreerd is
+            int startX = 0;
+            int yPos = 0;
 
-            int yPos = this.ClientSize.Height - cardControls[0].Height - 20; // Plaats dicht bij de onderkant
-
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < cardControls.Count; i++)
             {
                 Control cardControl = cardControls[i];
                 cardControl.Location = new Point(startX + i * (cardWidth + spacing), yPos);
-                cardControl.Anchor = AnchorStyles.Bottom; // Blijft aan de onderkant verankerd
-                this.Controls.Add(cardControl);
+                cardsPanel.Controls.Add(cardControl);
             }
         }
 
-
-        public void RemoveCardFromList(Card card)
+        public void RemoveCardFromLists(Card card)
         {
             cards.Remove(card); // Verwijder de bijbehorende kaart uit de lijst
+            cardControls.Remove(card.GetCardControl());
         }
 
         // Methode die de combobox updates met de beschikbare characters

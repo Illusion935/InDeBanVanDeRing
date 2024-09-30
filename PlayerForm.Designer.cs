@@ -32,13 +32,14 @@
             this.comboBoxCharacters = new System.Windows.Forms.ComboBox();
             this.btnLockCharacter = new System.Windows.Forms.Button();
             this.imgCharacter = new System.Windows.Forms.PictureBox();
+            this.cardsPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPlayerNaam
             // 
             this.txtPlayerNaam.AutoSize = true;
-            this.txtPlayerNaam.Location = new System.Drawing.Point(23, 22);
+            this.txtPlayerNaam.Location = new System.Drawing.Point(23, 23);
             this.txtPlayerNaam.Name = "txtPlayerNaam";
             this.txtPlayerNaam.Size = new System.Drawing.Size(86, 20);
             this.txtPlayerNaam.TabIndex = 0;
@@ -74,16 +75,28 @@
             this.imgCharacter.TabIndex = 3;
             this.imgCharacter.TabStop = false;
             // 
+            // cardsPanel
+            // 
+            this.cardsPanel.AutoScroll = true;
+            this.cardsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cardsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cardsPanel.Location = new System.Drawing.Point(10, 113);
+            this.cardsPanel.Name = "cardsPanel";
+            this.cardsPanel.Size = new System.Drawing.Size(780, 369);
+            this.cardsPanel.TabIndex = 4;
+            // 
             // PlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 435);
+            this.ClientSize = new System.Drawing.Size(800, 492);
+            this.Controls.Add(this.cardsPanel);
             this.Controls.Add(this.imgCharacter);
             this.Controls.Add(this.btnLockCharacter);
             this.Controls.Add(this.comboBoxCharacters);
             this.Controls.Add(this.txtPlayerNaam);
             this.Name = "PlayerForm";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Player";
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
             this.ResumeLayout(false);
@@ -97,5 +110,6 @@
         private System.Windows.Forms.ComboBox comboBoxCharacters;
         private System.Windows.Forms.Button btnLockCharacter;
         private System.Windows.Forms.PictureBox imgCharacter;
+        private System.Windows.Forms.Panel cardsPanel;
     }
 }
