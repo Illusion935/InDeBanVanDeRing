@@ -56,7 +56,14 @@
     <Compile Include="GameObjects\hobbit cards\FriendshipCard.cs" />
     <Compile Include="GameObjects\hobbit cards\JokerCard.cs" />
     <Compile Include="GameObjects\hobbit cards\TravelCard.cs" />
+    <Compile Include="GameObjects\PlayerPawnControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameObjects\PlayerPawnControl.Designer.cs">
+      <DependentUpon>PlayerPawnControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="IForm.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="PlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BoardForm.resx">
       <DependentUpon>BoardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects\PlayerPawnControl.resx">
+      <DependentUpon>PlayerPawnControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerForm.resx">
       <DependentUpon>PlayerForm.cs</DependentUpon>
@@ -132,6 +142,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diamond.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawnYellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawnOrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawnGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawnRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawnBlue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,16 +19,74 @@ namespace InDeBanVanDeRing
         public List<Control> cardControls { get; }
 
         private Dictionary<int, PlayerForm> playerForms = new Dictionary<int, PlayerForm>();
+        private Dictionary<string, Player> players = new Dictionary<string, Player>();
         private List<string> availableCharacters = new List<string> { "Frodo", "Sam", "Merry", "Pippin", "Fatty" };
         private Stack<Card> deck;
         private List<Card> cardsOnBoard = new List<Card>();
+        private Dictionary<int, Panel> tilePanelsDict;
+        private Dictionary<int, Point> tilePawnLocations;
 
         public BoardForm()
         {
             InitializeComponent();
             instance = this;
 
+            InitializeCorruptionLine();
+            InitializePawnLocationsSetup();
             deck = CreateNewDeck();
+        }
+
+        private void InitializePawnLocationsSetup()
+        {
+            int tw = tilePanelsDict[1].Width;
+            int th = tilePanelsDict[1].Height;
+            int ph = new PlayerPawnControl("Red").Height;
+
+            tilePawnLocations = new Dictionary<int, Point>()
+            {
+                { 0, new Point(3, 3) },        // Pawn 1
+                { 1, new Point(tw/2, th/3-ph/2) },      // Pawn 2
+                { 2, new Point(3, th/2-ph/2) },       // Pawn 3
+                { 3, new Point(tw/2, th/3*2-ph/2) },      // Pawn 4
+                { 4, new Point(3, th/4*3-3) },       // Pawn 5
+            };
+        }
+
+        private void InitializeCorruptionLine()
+        {
+            tilePanelsDict = new Dictionary<int, Panel>();
+            // Verwijder eventuele bestaande controls
+            corruptionLine.Controls.Clear();
+
+            // Voeg 15 panelen toe, elk met een andere grijstint
+            for (int i = 0; i < 15; i++)
+            {
+                Panel tilePanel = new Panel();
+                tilePanel.Dock = DockStyle.Fill;
+
+                // Stel de kleur in op basis van de index (verschillende grijstinten)
+                int greyValue = 255 - (i * 15); // Dit zorgt voor een aflopende grijstint
+                tilePanel.BackColor = Color.FromArgb(greyValue, greyValue, greyValue);
+                // Stel de border van het panel in
+                tilePanel.BorderStyle = BorderStyle.FixedSingle;
+
+                // Voeg het stepPanel toe aan de betreffende kolom in de eerste rij
+                corruptionLine.Controls.Add(tilePanel, i, 0);
+
+                // Voeg het tilePanel toe aan de dictionary om het later te kunnen opzoeken
+                tilePanelsDict.Add(i+1, tilePanel);
+            }
+        }
+
+        private void MovePawnOnTile(PlayerPawnControl pawnControl, int tileNum)
+        {
+            Panel tile = tilePanelsDict[tileNum];
+            int pawnIndex = tile.Controls.Count;
+            
+            Point point = tilePawnLocations[pawnIndex];
+            pawnControl.Location = point;
+
+            tile.Controls.Add(pawnControl);
         }
 
         public void PutCardOnBoard(Card newCard)
@@ -80,10 +138,13 @@ namespace InDeBanVanDeRing
         }
 
         // Event handler voor wanneer een speler zijn keuze vastzet
-        private void Form_CharacterLockedIn(string selectedCharacter, int playerNumber)
+        private void Form_CharacterLockedIn(Player player)
         {
+            players[player.Character] = player;
+            MovePawnOnTile(player.PawnControl, 2);
+            MovePawnOnTile(player.PawnControl, 15);
             // Verwijder het gekozen character uit de beschikbare characters
-            availableCharacters.Remove(selectedCharacter);
+            availableCharacters.Remove(player.Character);
 
             // Update de character opties in de andere forms
             foreach (var form in playerForms.Values)

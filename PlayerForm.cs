@@ -16,12 +16,13 @@ namespace InDeBanVanDeRing
     {
         public static PlayerForm instance;
 
+        private Player player;
         private int playerNumber; // Opslag van het speler-nummer
         private string selectedCharacter; // Opslag van het gekozen karakter
         private List<Card> cards = new List<Card>();
         private List<Control> cardControls = new List<Control>();
 
-        public event Action<string, int> CharacterLockedIn; // Event dat wordt getriggerd wanneer een keuze wordt vastgezet
+        public event Action<Player> CharacterLockedIn; // Event dat wordt getriggerd wanneer een keuze wordt vastgezet
 
         public PlayerForm(int playerNumber)
         {
@@ -103,8 +104,10 @@ namespace InDeBanVanDeRing
             comboBoxCharacters.Enabled = false;
             btnLockCharacter.Enabled = false;
 
+            player = new Player(playerNumber, this, selectedCharacter);
+
             // Trigger het CharacterLockedIn event en geef de gekozen character en speler-nummer door
-            CharacterLockedIn?.Invoke(selectedCharacter, playerNumber);
+            CharacterLockedIn?.Invoke(player);
         }
 
         private void comboBoxCharacters_SelectedIndexChanged(object sender, EventArgs e)

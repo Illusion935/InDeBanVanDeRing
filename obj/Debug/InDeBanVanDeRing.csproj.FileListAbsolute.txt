@@ -12,3 +12,4 @@ C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.csproj.Gene
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.csproj.CoreCompileInputs.cache
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.exe
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.pdb
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.GameObjects.PlayerPawnControl.resources
