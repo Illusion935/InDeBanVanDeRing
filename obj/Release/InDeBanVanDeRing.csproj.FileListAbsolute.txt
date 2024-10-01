@@ -1,0 +1,15 @@
+C:\Users\MO\source\repos\InDeBanVanDeRing\bin\Release\InDeBanVanDeRing.exe.config
+C:\Users\MO\source\repos\InDeBanVanDeRing\bin\Release\InDeBanVanDeRing.exe
+C:\Users\MO\source\repos\InDeBanVanDeRing\bin\Release\InDeBanVanDeRing.pdb
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.csproj.AssemblyReference.cache
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.csproj.SuggestedBindingRedirects.cache
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.BoardForm.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.GameObjects.PlayerPawnControl.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.PlayerForm.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.GameObjects.HobbitCard.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.GameObjects.HobbitCardControl.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.Properties.Resources.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.csproj.GenerateResource.cache
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.csproj.CoreCompileInputs.cache
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.exe
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Release\InDeBanVanDeRing.pdb

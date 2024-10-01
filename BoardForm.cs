@@ -102,7 +102,7 @@ namespace InDeBanVanDeRing
                 card.ControlLocation = new Point(xPos, yPos);
 
                 card.SetCardControl();
-                card.GetCardControl();
+                Controls.Add(card.GetCardControl());
 
                 xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
             }
@@ -141,8 +141,7 @@ namespace InDeBanVanDeRing
         private void Form_CharacterLockedIn(Player player)
         {
             players[player.Character] = player;
-            MovePawnOnTile(player.PawnControl, 2);
-            MovePawnOnTile(player.PawnControl, 15);
+            MovePawnOnTile(player.PawnControl, 1);
             // Verwijder het gekozen character uit de beschikbare characters
             availableCharacters.Remove(player.Character);
 

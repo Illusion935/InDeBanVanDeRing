@@ -40,11 +40,22 @@ namespace InDeBanVanDeRing.GameObjects
 
         private void btnPlayCard_Click(object sender, EventArgs e)
         {
-            // Probeer Parent te casten naar IForm
-            if (!(this.Parent is IForm parentForm))
+            IForm currentForm = null;
+
+            if (this.Parent is IForm parentForm)
             {
-                MessageBox.Show("Parent form does not implement IForm.");
-                return; // Stop de uitvoering als de parent niet het juiste type heeft
+                // The parent implements IForm
+                currentForm = parentForm;
+            }
+            else if (this.Parent?.Parent is IForm parentOfParentForm)
+            {
+                // The parent of the parent implements IForm
+                currentForm = parentOfParentForm;
+            }
+            else
+            {
+                MessageBox.Show("Neither parent nor parent of parent implements IForm.");
+                return; // Stop execution if neither implement IForm
             }
 
             // Probeer de kaart te spelen
@@ -57,7 +68,7 @@ namespace InDeBanVanDeRing.GameObjects
             }
 
             // Verwijder de kaart uit de parent form
-            parentForm.RemoveCardFromLists(_card);
+            currentForm.RemoveCardFromLists(_card);
         }
 
         private void InitializeComponent()
