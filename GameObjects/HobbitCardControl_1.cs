@@ -120,6 +120,7 @@ namespace InDeBanVanDeRing.GameObjects
             // 
             // HobbitCardControl
             // 
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.btnPlayCard);

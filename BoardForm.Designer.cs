@@ -33,8 +33,9 @@
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.btnPlayer1Window = new System.Windows.Forms.Button();
             this.btnStartGame = new System.Windows.Forms.Button();
-            this.btnGandalfGiveHobbitCards = new System.Windows.Forms.Button();
             this.corruptionLine = new System.Windows.Forms.TableLayoutPanel();
+            this.locationBoard1 = new InDeBanVanDeRing.LocationBoard();
+            this.dieControl1 = new InDeBanVanDeRing.GameObjects.DieControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -76,18 +77,6 @@
             this.btnStartGame.Text = "Start het spel";
             this.btnStartGame.UseVisualStyleBackColor = true;
             // 
-            // btnGandalfGiveHobbitCards
-            // 
-            this.btnGandalfGiveHobbitCards.BackColor = System.Drawing.Color.Gold;
-            this.btnGandalfGiveHobbitCards.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGandalfGiveHobbitCards.Location = new System.Drawing.Point(15, 23);
-            this.btnGandalfGiveHobbitCards.Name = "btnGandalfGiveHobbitCards";
-            this.btnGandalfGiveHobbitCards.Size = new System.Drawing.Size(173, 95);
-            this.btnGandalfGiveHobbitCards.TabIndex = 6;
-            this.btnGandalfGiveHobbitCards.Text = "Gandalf: ELKE SPELER ontvangt 6 hobbit kaarten";
-            this.btnGandalfGiveHobbitCards.UseVisualStyleBackColor = false;
-            this.btnGandalfGiveHobbitCards.Click += new System.EventHandler(this.btnGandalfGiveHobbitCards_Click);
-            // 
             // corruptionLine
             // 
             this.corruptionLine.ColumnCount = 15;
@@ -113,6 +102,23 @@
             this.corruptionLine.Size = new System.Drawing.Size(1000, 100);
             this.corruptionLine.TabIndex = 7;
             // 
+            // locationBoard1
+            // 
+            this.locationBoard1.BackColor = System.Drawing.Color.Transparent;
+            this.locationBoard1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.locationBoard1.Location = new System.Drawing.Point(0, 0);
+            this.locationBoard1.Name = "locationBoard1";
+            this.locationBoard1.Size = new System.Drawing.Size(1055, 190);
+            this.locationBoard1.TabIndex = 9;
+            // 
+            // dieControl1
+            // 
+            this.dieControl1.BackColor = System.Drawing.Color.Transparent;
+            this.dieControl1.Location = new System.Drawing.Point(803, 75);
+            this.dieControl1.Name = "dieControl1";
+            this.dieControl1.Size = new System.Drawing.Size(80, 80);
+            this.dieControl1.TabIndex = 8;
+            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -120,11 +126,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1055, 738);
+            this.Controls.Add(this.dieControl1);
             this.Controls.Add(this.corruptionLine);
-            this.Controls.Add(this.btnGandalfGiveHobbitCards);
             this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnPlayer1Window);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.locationBoard1);
             this.Name = "BoardForm";
             this.Text = "Board";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -138,8 +145,9 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Button btnPlayer1Window;
         private System.Windows.Forms.Button btnStartGame;
-        private System.Windows.Forms.Button btnGandalfGiveHobbitCards;
         private System.Windows.Forms.TableLayoutPanel corruptionLine;
+        private GameObjects.DieControl dieControl1;
+        private LocationBoard locationBoard1;
     }
 }
 

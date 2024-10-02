@@ -14,8 +14,6 @@ namespace InDeBanVanDeRing
 {
     public partial class PlayerForm : Form, IForm
     {
-        public static PlayerForm instance;
-
         private Player player;
         private int playerNumber; // Opslag van het speler-nummer
         private string selectedCharacter; // Opslag van het gekozen karakter
@@ -27,7 +25,6 @@ namespace InDeBanVanDeRing
         public PlayerForm(int playerNumber)
         {
             InitializeComponent();
-            instance = this;
             this.playerNumber = playerNumber;
 
             comboBoxCharacters.Items.AddRange(new string[] { "Frodo", "Sam", "Merry", "Pippin", "Fatty" });

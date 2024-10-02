@@ -53,6 +53,12 @@
       <DependentUpon>BoardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CardColors.cs" />
+    <Compile Include="GameObjects\DieControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameObjects\DieControl.Designer.cs">
+      <DependentUpon>DieControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameObjects\hobbit cards\FriendshipCard.cs" />
     <Compile Include="GameObjects\hobbit cards\JokerCard.cs" />
     <Compile Include="GameObjects\hobbit cards\TravelCard.cs" />
@@ -63,6 +69,12 @@
       <DependentUpon>PlayerPawnControl.cs</DependentUpon>
     </Compile>
     <Compile Include="IForm.cs" />
+    <Compile Include="LocationBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LocationBoard.Designer.cs">
+      <DependentUpon>LocationBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="PlayerForm.cs">
       <SubType>Form</SubType>
@@ -84,8 +96,14 @@
     <EmbeddedResource Include="BoardForm.resx">
       <DependentUpon>BoardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects\DieControl.resx">
+      <DependentUpon>DieControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameObjects\PlayerPawnControl.resx">
       <DependentUpon>PlayerPawnControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocationBoard.resx">
+      <DependentUpon>LocationBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerForm.resx">
       <DependentUpon>PlayerForm.cs</DependentUpon>
@@ -157,6 +175,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pawnBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieTwoDots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieThreeDots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieOneDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieEye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dieCards.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

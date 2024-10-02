@@ -13,3 +13,5 @@ C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.csproj.Core
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.exe
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.pdb
 C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.GameObjects.PlayerPawnControl.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.GameObjects.DieControl.resources
+C:\Users\MO\source\repos\InDeBanVanDeRing\obj\Debug\InDeBanVanDeRing.LocationBoard.resources

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,12 +17,13 @@ namespace InDeBanVanDeRing
     {
         public static BoardForm instance;
 
+        public bool dieLocked { get; set; }
         public List<Control> cardControls { get; }
+        public Dictionary<int, PlayerForm> playerForms = new Dictionary<int, PlayerForm>();
+        public Stack<Card> deck;
+        public Dictionary<string, Player> players = new Dictionary<string, Player>();
 
-        private Dictionary<int, PlayerForm> playerForms = new Dictionary<int, PlayerForm>();
-        private Dictionary<string, Player> players = new Dictionary<string, Player>();
         private List<string> availableCharacters = new List<string> { "Frodo", "Sam", "Merry", "Pippin", "Fatty" };
-        private Stack<Card> deck;
         private List<Card> cardsOnBoard = new List<Card>();
         private Dictionary<int, Panel> tilePanelsDict;
         private Dictionary<int, Point> tilePawnLocations;
@@ -34,6 +36,13 @@ namespace InDeBanVanDeRing
             InitializeCorruptionLine();
             InitializePawnLocationsSetup();
             deck = CreateNewDeck();
+            dieLocked = true;
+            SubscribeToDieRollEvent(locationBoard1.OnDieRolled);
+        }
+
+        internal void SubscribeToDieRollEvent(EventHandler handler)
+        {
+            dieControl1.DieClicked += handler;
         }
 
         private void InitializePawnLocationsSetup()
@@ -78,6 +87,34 @@ namespace InDeBanVanDeRing
             }
         }
 
+        public async Task<int> RollDie()
+        {
+            int dieResult = await dieControl1.RollDie();
+            return dieResult;
+        }
+
+        public void HandleDieRoll(int dieResult, Player player)
+        {
+            if (dieResult == 1)
+            {
+                int newPawnPos = player.PawnControl.Position + 1;
+                MovePawnOnTile(player.PawnControl, newPawnPos);
+                player.PawnControl.Position = newPawnPos;
+            }
+            else if (dieResult == 2)
+            {
+                int newPawnPos = player.PawnControl.Position + 2;
+                MovePawnOnTile(player.PawnControl, newPawnPos);
+                player.PawnControl.Position = newPawnPos;
+            }
+            else if (dieResult == 3)
+            {
+                int newPawnPos = player.PawnControl.Position + 3;
+                MovePawnOnTile(player.PawnControl, newPawnPos);
+                player.PawnControl.Position = newPawnPos;
+            }
+        }
+
         private void MovePawnOnTile(PlayerPawnControl pawnControl, int tileNum)
         {
             Panel tile = tilePanelsDict[tileNum];
@@ -99,9 +136,8 @@ namespace InDeBanVanDeRing
             foreach (var card in cardsOnBoard)
             {
                 // Stel de locatie van de controle in
-                card.ControlLocation = new Point(xPos, yPos);
+                card.GetCardControl().Location = new Point(xPos, yPos);
 
-                card.SetCardControl();
                 Controls.Add(card.GetCardControl());
 
                 xPos += card.Width + 10; // Verplaats naar rechts voor de volgende kaart (en wat ruimte ertussen)
@@ -223,23 +259,6 @@ namespace InDeBanVanDeRing
                 Card value = deckList[k];
                 deckList[k] = deckList[n];
                 deckList[n] = value;
-            }
-        }
-
-        private void btnGandalfGiveHobbitCards_Click(object sender, EventArgs e)
-        {
-            foreach(PlayerForm playerForm in playerForms.Values)
-            {
-                // Create a list to hold the 6 cards for this player
-                List<Card> playerHand = new List<Card>();
-
-                // Pop 6 cards from the deck
-                for (int i = 0; i < 6; i++)
-                {
-                    playerHand.Add(deck.Pop());
-                }
-
-                playerForm.AddCardsToHand(playerHand);
             }
         }
     }
